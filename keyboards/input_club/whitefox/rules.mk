@@ -1,0 +1,2 @@
+UNICODE_COMMON = yes
+KEY_LOCK_ENABLE = yes

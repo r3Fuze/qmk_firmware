@@ -70,8 +70,6 @@ CMakeLists.txt
 .vscode/c_cpp_properties.json
 .vscode/ipch/
 .vscode/last.sql
-.vscode/launch.json
-.vscode/tasks.json
 .vscode/temp.sql
 tags
 
@@ -117,3 +115,6 @@ compile_commands.json
 # VIA(L) files that don't belong in QMK repo
 via*.json
 /keyboards/**/keymaps/vial/*
+
+# User files
+r3fuze.json
