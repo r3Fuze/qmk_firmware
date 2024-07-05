@@ -46,10 +46,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_LAYER
 //#define NO_ACTION_TAPPING
 //#define NO_ACTION_ONESHOT
-
-#define UNICODE_SELECTED_MODES UNICODE_MODE_WINCOMPOSE
-#define UNICODE_KEY_WINC KC_RCTL
-
-#define LED_MATRIX_KEYPRESSES
-
-#define ENABLE_LED_MATRIX_SOLID_MULTISPLASH
