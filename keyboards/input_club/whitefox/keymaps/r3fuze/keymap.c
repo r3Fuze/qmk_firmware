@@ -61,6 +61,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return true;
 
+        case KC_O:
+            if (record->event.pressed) {
+                return handle_altgr("Ω");
+            }
+            return true;
+
         case SS_HELLO:
             if (record->event.pressed) {
                 send_string("Hello, world!\n");
@@ -106,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┬───┐
      * │Esc│ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 0 │ + │ ´ │ Backsp│ ½ │
      * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┼───┤
-     * │ Tab │ Q │ W │ E │ R │ T │ Y │ U │ I │ O │ P │ Å │ ¨ │     │Del│
+     * │ Tab │ Q │ W │ E │ R │ T │ Y │ U │ I │ O*│ P │ Å │ ¨ │     │Del│
      * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┐ Ent├───┤
      * │ Caps │ A │ S │ D │ F │ G │ H │ J │ K │ L │ Æ │ Ø │ ' │    │Hom│
      * ├────┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴───┴┬───┼───┤
@@ -116,12 +122,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * └────┴────┴────┴────────────────────────┴───┴───┴───┴───┴───┴───┘
      *  AltGr+C -> °
      *  AltGr+M -> μ
+     *  AltGr+O -> Ω
      */
     [0] = LAYOUT_65_iso(
         KC_ESC,     KC_1,       KC_2,       KC_3,   KC_4,       KC_5,       KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       DK_PLUS,    DK_ACUT,    KC_BSPC,    DK_HALF,
         KC_TAB,     KC_Q,       KC_W,       KC_E,   KC_R,       KC_T,       KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,       DK_ARNG,    DK_DIAE,                KC_DEL,
         KC_CAPS,    KC_A,       KC_S,       KC_D,   KC_F,       KC_G,       KC_H,       KC_J,       KC_K,       KC_L,       DK_AE,      DK_OSTR,    DK_QUOT,    KC_ENT,     KC_HOME,
-        KC_LSFT,    DK_LABK,    KC_Z,       KC_X,   KC_C,    KC_V,       KC_B,       KC_N,       KC_M,    KC_COMM,    KC_DOT,     DK_MINS,    KC_RSFT,    KC_UP,      KC_END,
+        KC_LSFT,    DK_LABK,    KC_Z,       KC_X,   KC_C,       KC_V,       KC_B,       KC_N,       KC_M,       KC_COMM,    KC_DOT,     DK_MINS,    KC_RSFT,    KC_UP,      KC_END,
         KC_LCTL,    MO(1),      KC_LALT,                                    KC_SPC,                             KC_RALT,    KC_LGUI,    KC_RCTL,    KC_LEFT,    KC_DOWN,    KC_RGHT
     ),
     /*
