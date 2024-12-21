@@ -28,6 +28,7 @@ const uint32_t unicode_map[] PROGMEM = {};
 //  CS -> custom
 enum custom_keycodes {
     SS_HELLO = SAFE_RANGE,
+    CS_EMAIL,
     CS_RAND
 };
 
@@ -70,6 +71,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case SS_HELLO:
             if (record->event.pressed) {
                 send_string("Hello, world!\n");
+            }
+            return false;
+
+        case CS_EMAIL:
+            if (record->event.pressed) {
+                send_string("r3fuze" SS_RALT("2") "gmail.com");
             }
             return false;
 
@@ -135,7 +142,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┬───┐
      * │GRV│F1 │F2 │F3 │F4 │F5 │F6 │F7 │F8 │F9 │F10│F11│F12│       │Mut│
      * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┼───┤
-     * │     │ ▽ │ ▽ │ ▽ │RND│ ▽ │ ▽ │ ▽ │ ▽ │ ▽ │ ▽ │ ▽ │ ▽ │     │PrS│
+     * │     │Mai│ ▽ │ ▽ │RND│ ▽ │ ▽ │ ▽ │ ▽ │ ▽ │ ▽ │ ▽ │ ▽ │     │PrS│
      * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┐Play├───┤
      * │CapWrd│ ▽ │ ▽ │ ▽ │ ▽ │ ▽ │ ▽ │ ▽ │ ▽ │ ▽ │ ▽ │ ▽ │ ▽ │    │PgU│
      * ├────┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴───┴┬───┼───┤
@@ -146,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [1] = LAYOUT_65_iso(
         KC_GRV,  KC_F1,      KC_F2,      KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NO,   KC_MUTE,
-        KC_NO,   _______,    _______,    _______, CS_RAND, _______, _______, _______, _______, _______, _______, _______, _______,          KC_PSCR,
+        KC_NO,   CS_EMAIL,   _______,    _______, CS_RAND, _______, _______, _______, _______, _______, _______, _______, _______,          KC_PSCR,
         CW_TOGG, _______,    _______,    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPLY, KC_PGUP,
         QK_LOCK, MO(2),      _______,    _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_NO,   KC_VOLU, KC_PGDN,
         KC_NO,   _______,    KC_NO,                                 KC_NO,                     KC_NO,   KC_APP,  KC_NO,   KC_MPRV, KC_VOLD, KC_MNXT
